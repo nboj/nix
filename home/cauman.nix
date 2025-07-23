@@ -16,6 +16,15 @@
 		enable = true;
 		userName = "nboj";
 		userEmail = "bud@example.com";
+		extraConfig = {
+		  credential."https://github.com".helper = "!gh auth git-credential";
+
+		  # (Optional) A nice‑to‑have that `gh` normally sets itself:
+		  gh."github.com".user = "nboj";
+		};
+		includes = [
+			{ path = "~/.gitlocal"; condition = "true"; }
+		];
 	};
 
 	programs.neovim = {
