@@ -7,6 +7,7 @@
 		./modules/theme.nix
 		./modules/notification.nix
 		./modules/looking-glass.nix
+		./modules/thunderbird.nix
 	];
 	home.username = "cauman";
 	home.homeDirectory = "/home/cauman";
