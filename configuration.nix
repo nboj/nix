@@ -7,7 +7,7 @@
 {
 	imports = [ # Include the results of the hardware scan.
 		./modules/hyprland.nix
-		./modules/nvidia.nix
+		#./modules/nvidia.nix
 		./modules/dolphin.nix
 		./modules/passthrough.nix
 		./modules/kernel-remap.nix
