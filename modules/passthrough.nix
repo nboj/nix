@@ -23,6 +23,9 @@
 		config.boot.kernelPackages.kvmfr
 	];
 
+	environment.systemPackages = with pkgs; [
+		pciutils
+	];
 
 	#options vfio-pci ids=1002:6819,1002:aab0
 	boot.extraModprobeConfig = ''

@@ -2,15 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-	imports = [ # Include the results of the hardware scan.
+	imports = [
+		# Include the results of the hardware scan.
 		./modules/hyprland.nix
 		#./modules/nvidia.nix
-		./modules/dolphin.nix
 		./modules/passthrough.nix
 		./modules/kernel-remap.nix
+		./modules/thunar.nix
 	];
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 
@@ -118,6 +119,13 @@
 	system.stateVersion = "25.05"; # Did you read the comment?
 	programs.zsh.enable = true;
 
+	programs.steam = {
+		enable = true;
+		remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+		dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+		localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+	};
+
 	# List packages installed in system profile. To search, run:
 	# $ nix search wget
 	environment.systemPackages = with pkgs; [
@@ -130,8 +138,27 @@
 		pavucontrol
 		spotify
 		kbd
-		pciutils
 		evtest
+		awscli2
+		gnome-system-monitor
+		wget
+
+		# ---- WINE ----
+		wineWowPackages.stable # support both 32-bit and 64-bit applications
+		wine # support 32-bit only
+		(wine.override { wineBuild = "wine64"; }) # support 64-bit only
+		wine64 # support 64-bit only
+		wineWowPackages.staging # wine-staging (version with experimental features)
+		winetricks # winetricks (all versions)
+		wineWowPackages.waylandFull # native wayland support (unstable)
 	];
+
+	programs.tmux = {
+		enable = true;
+		extraConfig = ''
+			set -g base-index 1
+			set -sg escape-time 0
+		'';
+	};
 }
 

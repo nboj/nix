@@ -1,4 +1,9 @@
 {pkgs, ...}:
 {
-	programs.thunderbird.enable = true;
+	programs.thunderbird = {
+		enable = true;
+		profiles.personal = {
+			isDefault = true;
+		};
+	};
 }

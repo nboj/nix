@@ -48,7 +48,7 @@ send_notification() {
 		notify-send                               \
 			--app-name="volume"                     \
 			--replace-id=91190                      \
-			--hint=int:value:$vol                   \
+			--hint=int:value:0                   \
 			--hint=string:x-dunst-stack-tag:volume  \
 			-i "$icon" "Muted";
 	else

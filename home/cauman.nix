@@ -1,54 +1,67 @@
 { config, pkgs, ... }:
 
 {
-	imports = [
-		./modules/hyprland/hyprland.nix
-		./modules/zsh.nix
-		./modules/theme.nix
-		./modules/notification.nix
-		./modules/looking-glass.nix
-		./modules/thunderbird.nix
-	];
-	home.username = "cauman";
-	home.homeDirectory = "/home/cauman";
-	home.stateVersion = "25.05"; # Match your NixOS version
+  imports = [
+    ./modules/hyprland/hyprland.nix
+    ./modules/zsh.nix
+    ./modules/theme.nix
+    ./modules/notification.nix
+    ./modules/looking-glass.nix
+    ./modules/thunderbird.nix
+  ];
+  home.username = "cauman";
+  home.homeDirectory = "/home/cauman";
+  home.stateVersion = "25.05"; # Match your NixOS version
 
-	programs.git = {
-		enable = true;
-		userName = "nboj";
-		userEmail = "bud@example.com";
-		extraConfig = {
-		  credential."https://github.com".helper = "!gh auth git-credential";
+  programs.git = {
+    enable = true;
+    userName = "nboj";
+    userEmail = "bud@example.com";
+    extraConfig = {
+      credential."https://github.com".helper = "!gh auth git-credential";
 
-		  # (Optional) A nice‑to‑have that `gh` normally sets itself:
-		  gh."github.com".user = "nboj";
-		};
-		includes = [
-			{ path = "~/.gitlocal"; condition = "true"; }
-		];
-	};
+      # (Optional) A nice‑to‑have that `gh` normally sets itself:
+      gh."github.com".user = "nboj";
+    };
+    includes = [
+      { path = "~/.gitlocal"; condition = "true"; }
+    ];
+  };
 
-	programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-	};
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
-	programs.starship.enable = true;
+  programs.starship.enable = true;
 
+  # --- OTHER ---
+  # Packages available in your user profile only (not system-wide)
+  home.packages = with pkgs; [
+    ripgrep
+    gcc
+    python3
+    discord
+    nodejs
+    fastfetch
+    dbeaver-bin
+    protonvpn-gui
+    # minecraft
+    prismlauncher
 
-	# --- OTHER ---
-	# Packages available in your user profile only (not system-wide)
-	home.packages = with pkgs; [
-		ripgrep
-		gcc
-		rustup
-		python3
-		discord
-		nodejs
-		fastfetch
-	];
+    # rust
+    clippy
+    rustfmt
+    rust-analyzer
+  ];
 
-	# Let Home Manager manage ~/.config directories cleanly
-	xdg.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true; # see note on other shells below
+    nix-direnv.enable = true;
+  };
+
+  # Let Home Manager manage ~/.config directories cleanly
+  xdg.enable = true;
 }
 

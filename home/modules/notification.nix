@@ -10,6 +10,7 @@
 			border-size      = 2;
 			border-color     = "#585b70";
 			default-timeout  = 5000;   # ms
+			layer = "overlay";
 		};
 	};
 
