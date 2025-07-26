@@ -5,6 +5,7 @@
 		home-manager.url = "github:nix-community/home-manager/release-25.05";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 		hyprland.url = "github:hyprwm/Hyprland";
+		nixcord.url = "github:kaylorben/nixcord";
 	};
 
 	outputs = { self, nixpkgs, home-manager, hyprland, ... } @inputs:
@@ -26,6 +27,10 @@
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
 						home-manager.users.cauman = import ./home/cauman.nix;
+						home-manager.sharedModules = [
+							inputs.nixcord.homeModules.nixcord
+						];
+						home-manager.backupFileExtension = "backup";
 					}
 					{
 						nix.settings = {

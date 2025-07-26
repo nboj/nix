@@ -1,3 +1,5 @@
+# NOTE: MUST RUN THIS FIRST nix run github:KaylorBen/nixcord#dorion
+
 { config, pkgs, ... }:
 
 {
@@ -8,6 +10,7 @@
     ./modules/notification.nix
     ./modules/looking-glass.nix
     ./modules/thunderbird.nix
+    ./modules/nixcord.nix
   ];
   home.username = "cauman";
   home.homeDirectory = "/home/cauman";
@@ -41,7 +44,7 @@
     ripgrep
     gcc
     python3
-    discord
+		#discord
     nodejs
     fastfetch
     dbeaver-bin
