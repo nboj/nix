@@ -4,7 +4,7 @@
 		enable = false;
 	};
 	programs.nixcord = {
-		enable = true;
+		enable = false;
 		discord.enable = true;
 		vesktop.enable = false;
 		dorion.enable = false;

@@ -153,6 +153,14 @@
 		wineWowPackages.staging # wine-staging (version with experimental features)
 		winetricks # winetricks (all versions)
 		wineWowPackages.waylandFull # native wayland support (unstable)
+
+
+    # vesktop # If you prefer this
+
+    (discord.override {
+      withOpenASAR = true; # can do this here too
+      withVencord = true;
+    })
 	];
 
 	security.polkit.enable = true;
