@@ -140,8 +140,10 @@
 		kbd
 		evtest
 		awscli2
-		gnome-system-monitor
 		wget
+		# GNOME
+		gnome-system-monitor
+		gnome-multi-writer # iso flasher
 
 		# ---- WINE ----
 		wineWowPackages.stable # support both 32-bit and 64-bit applications
@@ -152,6 +154,23 @@
 		winetricks # winetricks (all versions)
 		wineWowPackages.waylandFull # native wayland support (unstable)
 	];
+
+	security.polkit.enable = true;
+systemd = {
+  user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+  };
+};
 
 	programs.tmux = {
 		enable = true;
