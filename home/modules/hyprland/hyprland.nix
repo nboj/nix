@@ -33,6 +33,7 @@
     exec-once = [
       "[workspace 2 silent] firefox"
       "[workspace 10 silent] thunderbird"
+      "hyprctl setcursor Bibata-Modern-Classic 24"
     ];
 
     env = [
@@ -170,7 +171,9 @@
       sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
       touchpad = {
-        natural_scroll = false;
+        natural_scroll = true;
+        disable_while_typing = false;
+        clickfinger_behavior = true;
       };
     };
 
