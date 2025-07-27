@@ -16,7 +16,6 @@
 				config.allowUnfree = true;
 			};
 		in {
-			home-manager.backupFileExtension = "backup";
 			nixosConfigurations.cauman = nixpkgs.lib.nixosSystem {
 				inherit system;
 				modules = [
