@@ -10,7 +10,6 @@ in
     shellAliases = {
       ll = "ls -la";
       vim = "nvim";
-      rebuild = "sudo nixos-rebuild switch --flake ${nix_path}#cauman";
       nixos = "cd ${nix_path}/ && vim .";
       restartwaybar = "pkill waybar 2>/dev/null; waybar & disown";
       newflake = "nix flake new -t github:nix-community/nix-direnv .";

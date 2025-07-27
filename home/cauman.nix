@@ -4,13 +4,11 @@
 
 {
   imports = [
-    ./modules/hyprland/hyprland.nix
-    ./modules/zsh.nix
     ./modules/theme.nix
     ./modules/notification.nix
     ./modules/looking-glass.nix
     ./modules/thunderbird.nix
-    ./modules/nixcord.nix
+    #./modules/nixcord.nix
   ];
   home.username = "cauman";
   home.homeDirectory = "/home/cauman";
