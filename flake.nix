@@ -5,7 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
-    #nixcord.url = "github:kaylorben/nixcord";
+
   };
 
   outputs = {

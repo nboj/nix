@@ -4,6 +4,8 @@
     ./kernel-remap.nix
     ./thunar.nix
   ];
+	# theme and configuration
+	programs.dconf.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
