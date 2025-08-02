@@ -8,6 +8,8 @@
     ./modules/notification.nix
     ./modules/looking-glass.nix
     ./modules/thunderbird.nix
+    ./modules/obs.nix
+    ./modules/wofi.nix
     #./modules/nixcord.nix
   ];
   home.username = "cauman";
@@ -54,6 +56,10 @@
     clippy
     rustfmt
     rust-analyzer
+
+		todoist-electron
+		globalprotect-openconnect
+		sirikali
   ];
 
   programs.direnv = {

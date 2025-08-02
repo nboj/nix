@@ -41,7 +41,7 @@
   users.users.cauman = {
     isNormalUser = true;
     description = "Christian";
-    extraGroups = ["networkmanager" "wheel" "libvirtd"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd" "storage" "disk"];
     # packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -129,6 +129,7 @@
     awscli2
     wget
     # GNOME
+	file-roller
     gnome-system-monitor
     gnome-multi-writer # iso flasher
 
